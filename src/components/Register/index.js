@@ -3,7 +3,7 @@ import { Form, FloatingLabel, Button } from "react-bootstrap"
 import { Spinner } from '../Spinner';
 import { Container, Row, Col } from 'react-bootstrap';
 
-export function Contact() {
+export const Register = (props) => {
 
 const initialFormValues = {
   "email": "",
@@ -102,5 +102,5 @@ const _handleSubmit = async (event) => {
     )
 } 
 
-export default Contact;
+export default Register;
 

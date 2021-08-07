@@ -1,55 +1,82 @@
-import { useEffect, useState} from 'react';
+import React  from 'react';
+import { useEffect, useState, useContext, useReducer } from 'react';
 import { Switch, Route, useLocation } from "react-router-dom";
 import { Container, Row, Col } from 'react-bootstrap';
 import { TopHeader } from './components/TopHeader';
 import { MainContent } from './components/MainContent';
-import { About } from './components/About';
-import { Documentation } from './components/Documentation';
-import { Register } from './components/Register';
 import { Login } from './components/Login';
 import { Logout } from './components/Logout';
-import { MyProjects } from './components/MyProjects';
 import { Footer } from './components/Footer';
-
 import './App.css';
+import storage_log from './utils/storage_log';
 
-function App() {
+// Declare useContext context to pass session state and dispatch context to lower components
+export const SessionContext = React.createContext(); 
+
+export const App = (props) => {
+
+  const initialSession = {
+    first_name: "",
+    last_name: "",
+    title: "",
+    company: "",
+    email: "",
+    created: "",
+    last_access: "",
+    jwt: "",
+  }
 
   let location = useLocation();
+  const [user, setUser] = useState(null);
+
+
+
+  // This useReducer hooks calls local functions to handle the requested actions
+  function sessionReducer(state, action) {
+    storage_log('SR-state=', state);
+    storage_log('SR-action=', action);
+ 
+    switch (action.type) {
+      case 'SessionUpdate':
+        return (action.session);
+      default:
+        return session;
+    }
+  }
+
+  // This defines the initial session authentication object and the session reducer dispatch function
+  const [session, dispatch] = useReducer(sessionReducer, initialSession);
+
+  // User Login Handler
+  // User Session Update Handler
+  // User Logout Handler
 
 
   return (
     <div className="App">
 
+    <SessionContext.Provider value={ { 'session': session, 'dispatch': dispatch } } >
+
     <Container>
+
       <TopHeader />
 
-      <Switch>
-        <Route path="/" exact>
           <MainContent />
-        </Route>
-        <Route path="/about" exact>
-          <About />
-        </Route>
-        <Route path="/documentation" exact>
-          <Documentation />
-        </Route>
-        <Route path="/register" exact>
-          <Register />
-        </Route>
-        <Route path="/login" exact>
-          <Login />
-        </Route>
-        <Route path="/logout" exact>
-          <Logout />
-        </Route>
-        <Route path="/myprojects" exact>
-          <MyProjects />
-        </Route>
-      </Switch>
+
+          <Switch>
+            <Route path="/login" exact>
+              <Login />
+            </Route>
+            <Route path="/logout" exact>
+              <Logout />
+            </Route>
+        </Switch>
 
       <Footer />
+
     </Container>
+
+    </SessionContext.Provider>
 
     </div>
   );

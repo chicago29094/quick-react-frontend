@@ -1,7 +1,7 @@
 import {Image} from 'react-bootstrap';
 import { Container, Row, Col } from 'react-bootstrap';
 
-export function Documentation() {
+export const Documentation = (props) => {
 
     return (
         <div>

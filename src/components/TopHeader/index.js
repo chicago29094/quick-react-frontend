@@ -1,11 +1,13 @@
 import { Container, Row, Col } from 'react-bootstrap';
+import { Navigation } from '../../components/Navigation'
 
-export function TopHeader() {
+export const TopHeader = () => {
 
     return (
         <div className="top-header">
-            <h1></h1>
-            <h2></h2>
+            <h1>Top Header</h1>
+            <h2>Sub Head</h2>
+            <Navigation />
         </div>
     )
 } 
