@@ -2,7 +2,8 @@ import { Container, Row, Col, Modal, Button } from 'react-bootstrap';
 import { useState, useEffect, useContext } from 'react';
 import { useHistory } from "react-router-dom";
 import { SessionContext } from '../../App';
-import { Spinner } from '../Spinner';
+import { SessionDispatchContext } from '../../App';
+import { LoadingSpinner } from '../LoadingSpinner';
 import { storage_log } from '../../utils/storage_log.js'
  
 export const Login = (props) => {
@@ -10,9 +11,7 @@ export const Login = (props) => {
     // This is utilized to redirect the logged in used to the My Projects page.
     let history = useHistory();
     const session = useContext(SessionContext);
-
-    //storage_log(session);
-    //storage_log(props);
+    const dispatch = useContext(SessionDispatchContext);
 
     // This is used by the bootstrap modal for window display control
     const [show, setShow] = useState(true);
@@ -43,7 +42,7 @@ export const Login = (props) => {
     const _handleUserLogin = async (event) => {
  
     event.preventDefault();
-    storage_log(formValues);
+    //storage_log('Login: _handleUserLogin: ', formValues);
     setFormStatus({showStatus:true, showSpinner:true, message: { __html: ""} });
 
     const API_URI=`${process.env.REACT_APP_QR_API_ENDPOINT}/api/login`;
@@ -59,18 +58,23 @@ export const Login = (props) => {
 
         // All responses should be in JSON from the quick-react API
         const data = await response.json();
-        storage_log('_handleUserLogin=');
-        storage_log(data);
-        storage_log(response.status);
-        storage_log('=End');
-        console.log(data);
 
-        console.log(response.status);
         if (response.status===200) {
             setFormStatus({showStatus:true, showSpinner:false, message: { __html: "You have successfully logged in"} } );
+
+            const storageJSON = `{  
+                                    "_id": "${data.user._id}", 
+                                    "first_name": "${data.user.first_name}", 
+                                    "last_name": "${data.user.last_name}", 
+                                    "token": "${data.token}"
+                                 }`;
+            localStorage.setItem('quickreactsession', storageJSON );
+
             setLoggedIn(true);
 
-            session.dispatch({'type':"SessionUpdate", "session": data })
+            data.user.token=data.token;
+            //storage_log('Login: _handleUserLogin: ', {"type":"SessionUpdate", "session": data.user } );
+            dispatch({"type":"SessionUpdate", "session": data.user })
         }
         else if (response.status===401) {
             if (data.ErrorMessage !== undefined) {
@@ -90,10 +94,13 @@ export const Login = (props) => {
             }  
             setLoggedIn(false);    
         }
+        else {
+            setFormStatus({showStatus: true, showSpinner:false, message: { __html: "Log in failed.  Check your credentials and try again."} } );           
+        }
 
         
     } catch(error) {
-
+        setFormStatus({showStatus: true, showSpinner:false, message: { __html: "Log in failed.  Check your credentials and try again."} } );
     }
 
   } 
@@ -154,7 +161,7 @@ export const Login = (props) => {
                         </fieldset>
                         <input type='submit' value='Login to Quick-React' className="btn btn-primary"/>
                         {/* FormStatus Component*/}
-                        <Spinner props={formStatus} />         
+                        <LoadingSpinner props={formStatus} />         
                     </form>
                 </div>
 

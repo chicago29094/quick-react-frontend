@@ -5,7 +5,7 @@ export const TopHeader = () => {
 
     return (
         <div className="top-header">
-            <h1>Top Header</h1>
+            <h1>quick-react</h1>
             <h2>Sub Head</h2>
             <Navigation />
         </div>

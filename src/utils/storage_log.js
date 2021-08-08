@@ -2,18 +2,31 @@
 // This provides some unique debugging opportunities to trace events and refreshes when the Web console log
 // may be clearing on the browser.
 
-export function storage_log(logValue) {
+export function storage_log(...args) {
 
     const previousValue = localStorage.getItem("storage_debug.log");
   
-    if (typeof logValue==='object') {
-      const logValueJSON = JSON.stringify(logValue);
-      localStorage.setItem("storage_debug.log", `${previousValue}Object typeof: ${typeof logValue}\nObject: ${logValue}\nJSON.stringify: ${logValueJSON}\n`);
+    if (args.length>1) {
+      for (let i=1; i<args.length; i++) {
+        if (typeof args[i]==='object') {
+          const argsJSON = JSON.stringify(args[i]);
+          localStorage.setItem("storage_debug.log", `${previousValue}${args[0]} Object typeof: ${typeof args[i]}\n${args[0]} Object: ${args[i]}\n${args[0]} JSON.stringify: ${argsJSON}\n`);
+        }
+        else {
+          localStorage.setItem("storage_debug.log", `${previousValue}${args[0]} typeof: ${typeof args[i]}\n${args[0]} value: ${args[i]}\n`);
+        }
+      }
     }
     else {
-      localStorage.setItem("storage_debug.log", `${previousValue}typeof: ${typeof logValue}\nvalue: ${logValue}\n`);
+      if (typeof args[0]==='object') {
+        const argsJSON = JSON.stringify(args[0]);
+        localStorage.setItem("storage_debug.log", `${previousValue}Object typeof: ${typeof args[0]}\nObject: ${args[0]}\nJSON.stringify: ${argsJSON}\n`);
+      }
+      else {
+        localStorage.setItem("storage_debug.log", `${previousValue}typeof: ${typeof args[0]}\nvalue: ${args[0]}\n`);
+      }
     }
-  
+
   }
   
   export default storage_log;
