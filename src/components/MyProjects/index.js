@@ -1,10 +1,13 @@
 import { Image } from 'react-bootstrap';
 import { useEffect, useState, useContext } from 'react';
+import { useHistory } from "react-router-dom";
 import { Container, Row, Col } from 'react-bootstrap';
 import { SessionContext } from '../../App';
 import { SessionDispatchContext } from '../../App';
 import { LoadingSpinner } from '../LoadingSpinner';
 import { storage_log } from '../../utils/storage_log.js'
+import { PlusCircleFill as FilePlus} from 'react-bootstrap-icons';
+
 
 export const MyProjects = (props) => {
 
@@ -13,6 +16,10 @@ export const MyProjects = (props) => {
 
     const [projectsLoading, setProjectsLoading] = useState(false);
     const [projects, setProjects] = useState([]);
+    const [addNewProject, setAddNewProject] = useState(0);
+    const [deleteProject, setDeleteProject] = useState(0);
+
+    const history = useHistory();
 
     /*===================================================================================================*/
 
@@ -22,11 +29,11 @@ export const MyProjects = (props) => {
 
             const userProject = {
                 _id: "",
-                name: "",
-                description: "",
-                markup: "",
-                filepath: "",
-                archive: "",
+                project_name: "",
+                project_description: "",
+                project_markup: "",
+                project_filepath: "",
+                project_archive: "",
             };
 
             if ((session === undefined) || (session.token === undefined)) {
@@ -83,13 +90,104 @@ export const MyProjects = (props) => {
     }
     , [session]);
 
+
+    /*===================================================================================================*/
+    // handle add project request
+    
+    const _handleAddProject = async (event) => {
+ 
+        event.preventDefault();
+
+        const userProject = {
+            project_name: "New Unedited Project",
+            project_description: "Add your project description here.",
+        };
+
+        if ((session === undefined) || (session.token === undefined)) {
+            return;
+        }        
+
+        const API_URI=`${process.env.REACT_APP_QR_API_ENDPOINT}/project/`;
+    
+        try {
+            const response = await fetch(API_URI, {
+                "method": 'POST',
+                "body": JSON.stringify(userProject),
+                "headers": {
+                    "Content-Type": 'application/json',
+                    "Authorization": `Bearer ${session.token}`                   
+                }
+            });
+    
+            // All responses should be in JSON from the quick-react API
+            const data = await response.json();
+            storage_log('Add New Project', response.status);
+            storage_log('Add New Project', data);
+            
+            if ( (response.status===200) || (response.status===201) ) {
+                setAddNewProject(Date.now());
+            }
+            else if ( (response.status===400) || (response.status===401) ) {
+                if (data.ErrorMessage !== undefined) {
+                    console.error(`A new project could not be added. ${data.ErrorMessage}`);
+                    setAddNewProject(Date.now());
+                }
+                else {
+                    console.error(`A new project could not be added.`);
+                    setAddNewProject(Date.now());
+                }
+            }
+            else if (response.status===503) {
+                if (data.ErrorMessage !== undefined) {
+                    console.error(`A new project could not be added. ${data.ErrorMessage}`);
+                    setAddNewProject(Date.now());
+                } 
+                else {
+                    setAddNewProject(Date.now());
+                }  
+            }
+            else {
+                console.error(`A new project could not be added.`);
+                setAddNewProject(Date.now());
+            }
+    
+            
+        } catch(error) {
+            console.error(`A new project could not be added.`);
+            setAddNewProject(Date.now());
+        }
+    
+      } 
+
+    /*===================================================================================================*/
+
+    const _handleDeleteProject = async (event) => {
+
+    }
+
+    /*===================================================================================================*/
+    // Upon a successful addition of a project or deletion of a project, let's try to rerender the view
+    useEffect(() => {
+            storage_log('in useEffect#2: ', addNewProject, deleteProject);
+            setTimeout(() => {
+                history.push('/myprojects');
+            }, 1000);
+        }, [addNewProject, deleteProject]);
+
+    /*===================================================================================================*/
+
     return (
         <div>
             <h1 className="main-page-header-left">MY PROJECTS</h1>
             <Container className="project-list">
             <Row className="project-list-header">
                 <Col>
-                    <Row>Project</Row>
+                    <Row className="align-items-center row no-gutters">
+                        <Col xs="auto" className="file-plus">
+                            <FilePlus color="white" size="24" alt="Add Project" onClick={_handleAddProject} />
+                        </Col>
+                        <Col xs="auto" className="project-plus">Project</Col>
+                    </Row>
                 </Col>
                 <Col>
                     <Row>Edit</Row>

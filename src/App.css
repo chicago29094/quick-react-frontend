@@ -132,3 +132,19 @@ div.project-item:nth-child(even) {
 div.project-item:nth-child(odd) {
   background: rgb(231,241,246);
 }
+
+
+div.file-plus {
+  padding: 0px 10px 0px 0px;
+}
+
+div.file-plus svg:hover {
+  fill:rgb(240, 240, 240);
+  -webkit-filter: drop-shadow( 4px 4px 3px rgba(0, 0, 0, .7));
+  filter: drop-shadow( 4px 4px 2px rgba(0, 0, 0, .7));  
+}
+
+
+div.project-plus {
+  padding: 3px 0px 0px 0px;
+}
