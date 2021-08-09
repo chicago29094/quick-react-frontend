@@ -148,3 +148,23 @@ div.file-plus svg:hover {
 div.project-plus {
   padding: 3px 0px 0px 0px;
 }
+
+.project-item {
+  justify-content: space-between;
+}
+
+div.project-name {
+  flex: 1 1;
+}
+
+div.project-edit {
+  width: 90px;
+  flex: 0 0 auto;
+  text-align:center;
+}
+
+div.project-delete {
+  width: 90px;
+  flex: 0 0 auto;
+  text-align:center;
+}

@@ -7,6 +7,8 @@ import { SessionDispatchContext } from '../../App';
 import { LoadingSpinner } from '../LoadingSpinner';
 import { storage_log } from '../../utils/storage_log.js'
 import { PlusCircleFill as FilePlus} from 'react-bootstrap-icons';
+import { FileCodeFill as FileEdit} from 'react-bootstrap-icons';
+import { TrashFill as FileDelete} from 'react-bootstrap-icons';
 
 
 export const MyProjects = (props) => {
@@ -180,7 +182,7 @@ export const MyProjects = (props) => {
             <h1 className="main-page-header-left">MY PROJECTS</h1>
             <Container className="project-list">
             <Row className="project-list-header">
-                <Col>
+                <Col className="project-name">
                     <Row className="align-items-center row no-gutters">
                         <Col xs="auto" className="file-plus">
                             <FilePlus color="white" size="24" alt="Add Project" onClick={_handleAddProject} />
@@ -188,11 +190,11 @@ export const MyProjects = (props) => {
                         <Col xs="auto" className="project-plus">Project</Col>
                     </Row>
                 </Col>
-                <Col>
-                    <Row>Edit</Row>
+                <Col className="project-edit">
+                    Edit
                 </Col>
-                <Col>
-                    <Row>Delete</Row>
+                <Col className="project-delete">
+                    Delete
                 </Col>
             </Row>
 
@@ -207,10 +209,14 @@ export const MyProjects = (props) => {
                                     <Row><span className="pdesc">{project.project_description}</span></Row>
                                 </Col>
                                 <Col className="project-edit">
-                                    <Row>Project ID: {project._id}</Row>
+                                    <Row>
+                                        <FileEdit color="#60939A" size="24" alt="Add Project" onClick={_handleAddProject} />
+                                    </Row>
                                 </Col>
                                 <Col className="project-delete">
-                                    <Row>Project ID: {project._id}</Row>
+                                    <Row>
+                                        <FileDelete color="#60939A" size="24" alt="Add Project" onClick={_handleAddProject} />
+                                    </Row>
                                 </Col>
                             </Row>
                     )
