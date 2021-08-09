@@ -1,7 +1,7 @@
-import { Image } from 'react-bootstrap';
 import { useEffect, useState, useContext } from 'react';
 import { useHistory } from "react-router-dom";
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Image, Button } from 'react-bootstrap';
+import Toast from 'react-bootstrap/Toast'
 import { SessionContext } from '../../App';
 import { SessionDispatchContext } from '../../App';
 import { LoadingSpinner } from '../LoadingSpinner';
@@ -18,6 +18,10 @@ export const MyProjects = (props) => {
 
     const [projectsLoading, setProjectsLoading] = useState(false);
     const [projects, setProjects] = useState([]);
+
+    let showDeleteArray=[];
+
+    const [showDeleteConfirm, setShowDeleteConfirm] = useState(showDeleteArray);
 
     const history = useHistory();
 
@@ -175,7 +179,48 @@ export const MyProjects = (props) => {
 
     }
 
+
     /*===================================================================================================*/
+
+    const _handleShowDeleteConfirm = (index) => {
+
+        console.log('_handleShowDeleteConfirm0', showDeleteConfirm)
+        console.log('_handleShowDeleteConfirm1', index);
+
+        if (showDeleteConfirm[index]===undefined) {
+            return false;
+        }
+
+        console.log('_handleShowDeleteConfirm2', index);
+
+        // setShowDeleteConfirm(showDeleteArray);
+        return showDeleteConfirm[index];
+    }
+
+    /*===================================================================================================*/
+
+    const _handleToggleDeleteConfirm = (index) => {
+        console.log('_handleToggleDeleteConfirm0', showDeleteConfirm)
+        console.log('_handleToggleDeleteConfirm1', index);
+        
+        for (let key in showDeleteConfirm) {
+            showDeleteArray[key] = showDeleteConfirm[key];
+        }
+
+        if (showDeleteArray[index]===undefined) {
+            showDeleteArray[index]=true;
+            console.log('_handleToggleDeleteConfirm2', index);
+        }
+        else {
+            console.log('_handleToggleDeleteConfirm3', index);
+            showDeleteArray[index]=!showDeleteArray[index];
+        }
+        setShowDeleteConfirm(showDeleteArray);
+        return;
+    }
+
+    /*===================================================================================================*/
+
 
     return (
         <div>
@@ -200,8 +245,7 @@ export const MyProjects = (props) => {
 
             {
                 projects.map( (project, index) => {
-                    console.log(project);
-                    console.log(session);
+
                     return (
                             <Row className="project-item" key={index}>
                                 <Col className="project-name">
@@ -210,12 +254,29 @@ export const MyProjects = (props) => {
                                 </Col>
                                 <Col className="project-edit">
                                     <Row>
-                                        <FileEdit color="#60939A" size="24" alt="Add Project" onClick={_handleAddProject} />
+                                        <FileEdit color="#60939A" size="24" alt="Edit Project" onClick={_handleAddProject} />
                                     </Row>
                                 </Col>
                                 <Col className="project-delete">
                                     <Row>
-                                        <FileDelete color="#60939A" size="24" alt="Add Project" onClick={_handleAddProject} />
+                                        <FileDelete color="#60939A" size="24" alt="Delete Project" 
+                                            onClick = { () => { _handleToggleDeleteConfirm(index) } } />
+
+                                        <Toast className="delete-toast"  
+                                            show = { _handleShowDeleteConfirm(index) }
+                                            onClose = { () =>  {_handleToggleDeleteConfirm(index)} } >
+                                            <Toast.Header>
+                                                <FileDelete color="#60939A" size="16" alt="Delete Project" />
+                                                <strong className="me-auto">Confirm Delete Project</strong>
+                                                <small>Close</small>
+                                            </Toast.Header>
+                                            <Toast.Body>
+                                                Click to <Button 
+                                                            onClick={ () => {_handleShowDeleteConfirm(project._id)} } 
+                                                        >Confirm Delete</Button>
+                                            </Toast.Body>
+                                        </Toast>
+
                                     </Row>
                                 </Col>
                             </Row>
