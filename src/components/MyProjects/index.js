@@ -94,7 +94,7 @@ export const MyProjects = (props) => {
         }
         _handleLoadProjects();
     }
-    , [session, session.last_access, props.requestRender]);
+    , [session, session.last_access]);
 
 
     /*===================================================================================================*/
@@ -132,7 +132,6 @@ export const MyProjects = (props) => {
             
             if ( (response.status===200) || (response.status===201) ) {
                 dispatch( { "type": "SessionUpdateLastAccess", "session": session } );
-                props.setRequestRender(Date.now());
                 return;
             }
             else if ( (response.status===400) || (response.status===401) ) {

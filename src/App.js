@@ -67,18 +67,29 @@ export const App = (props) => {
       token: "",
     }
 
+    const newSession = {
+      _id: action.session._id,
+      first_name: action.session.first_name,
+      last_name: action.session.last_name,
+      title: action.session.title,
+      company: action.session.company,
+      email: action.session.email,
+      created: action.session.created,
+      last_access: action.session.last_access,
+      token: action.session.token,
+    }
+
     switch (action.type) {
       case 'SessionUpdate':
-        return action.session;
+        return newSession;
       case 'SessionUpdateLastAccess': {
-        action.session.last_access=Date.now();
-        storage_log(action.session);
-        return action.session;
+        newSession.last_access=Date.now();
+        return newSession;
       }
       case 'SessionLogout':
           return initialSession;        
       default:
-        return session;
+        return newSession;
     }
   }
   

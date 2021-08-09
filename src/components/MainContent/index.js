@@ -15,9 +15,6 @@ import { storage_log } from '../../utils/storage_log.js'
 export const MainContent = (props) => {
 
     const session = useContext(SessionContext);
-    const dispatch = useContext(SessionDispatchContext);
-
-    const [requestRender, setRequestRender] = useState(Date.now());
 
     return (
         <div className="main-content">
@@ -40,7 +37,7 @@ export const MainContent = (props) => {
                 <Route path="/myprojects" exact>
                 {            
                     session!==undefined && session._id && session.token ? ( 
-                        <MyProjects requestRender={requestRender} setRequestRender={setRequestRender} /> 
+                        <MyProjects /> 
                     )
                     : (
                         <Redirect to={{ pathname: "/login"}} />
