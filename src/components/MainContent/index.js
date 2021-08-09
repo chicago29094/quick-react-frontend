@@ -17,6 +17,8 @@ export const MainContent = (props) => {
     const session = useContext(SessionContext);
     const dispatch = useContext(SessionDispatchContext);
 
+    const [requestRender, setRequestRender] = useState(Date.now());
+
     return (
         <div className="main-content">
            {/* <h1 className="main-page-header-left">Main Content</h1> */}
@@ -38,7 +40,7 @@ export const MainContent = (props) => {
                 <Route path="/myprojects" exact>
                 {            
                     session!==undefined && session._id && session.token ? ( 
-                        <MyProjects /> 
+                        <MyProjects requestRender={requestRender} setRequestRender={setRequestRender} /> 
                     )
                     : (
                         <Redirect to={{ pathname: "/login"}} />

@@ -16,17 +16,23 @@ export const MyProjects = (props) => {
 
     const [projectsLoading, setProjectsLoading] = useState(false);
     const [projects, setProjects] = useState([]);
-    const [addNewProject, setAddNewProject] = useState(0);
-    const [deleteProject, setDeleteProject] = useState(0);
 
     const history = useHistory();
+
+    // setInterval(() => {
+    //     storage_log(`${Date.now()} MyProjects:`, session );
+    // }, 2000);
 
     /*===================================================================================================*/
 
     useEffect(() => {
+        storage_log('Inside _handleLoadProjects1', Date.now());
+        storage_log('Inside _handleLoadProjects1', session, session.last_access);
 
         async function _handleLoadProjects() {
-
+ 
+            storage_log('Inside _handleLoadProjects2', Date.now());
+ 
             const userProject = {
                 _id: "",
                 project_name: "",
@@ -88,7 +94,7 @@ export const MyProjects = (props) => {
         }
         _handleLoadProjects();
     }
-    , [session]);
+    , [session, session.last_access, props.requestRender]);
 
 
     /*===================================================================================================*/
@@ -125,36 +131,39 @@ export const MyProjects = (props) => {
             storage_log('Add New Project', data);
             
             if ( (response.status===200) || (response.status===201) ) {
-                setAddNewProject(Date.now());
+                dispatch( { "type": "SessionUpdateLastAccess", "session": session } );
+                props.setRequestRender(Date.now());
+                return;
             }
             else if ( (response.status===400) || (response.status===401) ) {
                 if (data.ErrorMessage !== undefined) {
                     console.error(`A new project could not be added. ${data.ErrorMessage}`);
-                    setAddNewProject(Date.now());
+                    return;
                 }
                 else {
                     console.error(`A new project could not be added.`);
-                    setAddNewProject(Date.now());
+                    return;
                 }
             }
             else if (response.status===503) {
                 if (data.ErrorMessage !== undefined) {
                     console.error(`A new project could not be added. ${data.ErrorMessage}`);
-                    setAddNewProject(Date.now());
+                    return;
                 } 
                 else {
-                    setAddNewProject(Date.now());
+                    console.error(`A new project could not be added.`);
+                    return;
                 }  
             }
             else {
                 console.error(`A new project could not be added.`);
-                setAddNewProject(Date.now());
+                return;               
             }
     
             
         } catch(error) {
             console.error(`A new project could not be added.`);
-            setAddNewProject(Date.now());
+            return;
         }
     
       } 
@@ -164,15 +173,6 @@ export const MyProjects = (props) => {
     const _handleDeleteProject = async (event) => {
 
     }
-
-    /*===================================================================================================*/
-    // Upon a successful addition of a project or deletion of a project, let's try to rerender the view
-    useEffect(() => {
-            storage_log('in useEffect#2: ', addNewProject, deleteProject);
-            setTimeout(() => {
-                history.push('/myprojects');
-            }, 1000);
-        }, [addNewProject, deleteProject]);
 
     /*===================================================================================================*/
 
@@ -198,10 +198,11 @@ export const MyProjects = (props) => {
             </Row>
 
             {
-                projects.map( (project) => {
+                projects.map( (project, index) => {
                     console.log(project);
+                    console.log(session);
                     return (
-                            <Row className="project-item">
+                            <Row className="project-item" key={index}>
                                 <Col className="project-name">
                                     <Row><span className="pname">Project: {project.project_name}</span></Row>
                                     <Row><span className="pdesc">{project.project_description}</span></Row>

@@ -70,6 +70,11 @@ export const App = (props) => {
     switch (action.type) {
       case 'SessionUpdate':
         return action.session;
+      case 'SessionUpdateLastAccess': {
+        action.session.last_access=Date.now();
+        storage_log(action.session);
+        return action.session;
+      }
       case 'SessionLogout':
           return initialSession;        
       default:
