@@ -1,4 +1,91 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+
+/*====================================================================
+Custom properties
+=====================================================================*/
+
+body {
+  font-size: 15pt;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  background-image: url("./images/unsplash-2.jpg");
+  /* background-image: url("./images/stringio.jpg"); */
+  background-color: #b0b0b0;
+  background-repeat: repeat-y;
+  background-size: 100% 120vh;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+div.app-container {
+  padding: 0px;
+  background-color: #ffffff;
+  min-height: 100vh;
+}
+
+:root {
+  --heading-dark: #000000;
+  --heading-red: #bc0202;
+  --heading-midgray: #6f6f6f;
+  --heading-gray: #9f9f9f;
+  --main-nav: #f0f0f0;
+  --sub-nav: rgba(0, 0, 0, 1);
+  --sub-nav-bg-light: rgb(239, 239, 239);  
+  --reflex-blue: rgb(0, 165, 254);
+}
+
+/*====================================================================
+Component: TopHeader
+=====================================================================*/
+
+div.top-header {
+  height: 120px;
+  padding: 0px;
+}
+
+div.top-border {
+  height: 8px;
+  background-image: url('images/sprint3_background.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+
+img.qr-logo {
+  max-height: 90px;
+  margin: 20px;
+}
+
+img.qr-image {
+  max-height: 120px;
+  margin-top: 0px;
+  width: 100%;
+}
+
+/*====================================================================
+Component: main-content
+=====================================================================*/
+
+div.main-content {
+  padding: 20px;
+  min-height: 70vh;
+}
+
+h1.main-page-header-left {
+  margin: 20px 0px 30px 0px;
+  font-size: 1.8rem;
+}
+
+
+/*====================================================================
+Component: footer-content
+=====================================================================*/
+
+div.footer-content {
+  padding: 20px;
+  height: 200px; 
+}
+
 /*====================================================================
 Component: Spinner
 =====================================================================*/
@@ -13,3 +100,35 @@ Component: Spinner
   display: block;
 }
 
+/*====================================================================
+Component: MyProjects
+=====================================================================*/
+
+div.project-list-header {
+  padding: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  background: rgb(112,163,170);
+}
+
+div.project-name span.pname{
+  font-weight: bold;
+}
+
+div.project-name span.pdesc{
+  font-weight: normal;
+}
+
+div.project-item {
+  padding: 8px;
+  font-size: 1rem;
+}
+
+div.project-item:nth-child(even) {
+  background: rgb(214, 239, 246);
+}
+div.project-item:nth-child(odd) {
+  background: rgb(231,241,246);
+}

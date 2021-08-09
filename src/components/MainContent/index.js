@@ -18,8 +18,8 @@ export const MainContent = (props) => {
     const dispatch = useContext(SessionDispatchContext);
 
     return (
-        <div>
-           <h1 className="main-page-header-left">Main Content</h1>
+        <div className="main-content">
+           {/* <h1 className="main-page-header-left">Main Content</h1> */}
            <Container>
 
             <Switch>

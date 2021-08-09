@@ -173,12 +173,14 @@ export const App = (props) => {
     <SessionContext.Provider value={session} >
     <SessionDispatchContext.Provider value={dispatch} >
 
-    <Container>
+    <Container className="app-container">
 
-      <TopHeader />
-
-          <MainContent />
-
+      <Row>
+        <TopHeader />
+      </Row>
+      
+      <Row>
+        <MainContent/>
           <Switch>
             <Route path="/login" exact>
               <Login />
@@ -187,9 +189,12 @@ export const App = (props) => {
               <Logout />
             </Route>
         </Switch>
+      </Row>
 
-      <Footer />
-
+      <Row>
+        <Footer />
+      </Row>
+      
     </Container>
 
     </SessionDispatchContext.Provider>
