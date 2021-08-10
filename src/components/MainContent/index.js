@@ -7,6 +7,7 @@ import { About } from '../About';
 import { Documentation } from '../Documentation';
 import { Register } from '../Register';
 import { MyProjects } from '../MyProjects';
+import { MyProjectAdmin } from '../MyProjectAdmin';
 import { Login } from '../Login';
 import { SessionContext } from '../../App';
 import { SessionDispatchContext } from '../../App';
@@ -15,25 +16,35 @@ import { storage_log } from '../../utils/storage_log.js'
 export const MainContent = (props) => {
 
     const session = useContext(SessionContext);
-    const dispatch = useContext(SessionDispatchContext);
 
     return (
-        <div>
-           <h1 className="main-page-header-left">Main Content</h1>
+        <div className="main-content">
+           {/* <h1 className="main-page-header-left">Main Content</h1> */}
            <Container>
 
             <Switch>
                 <Route path="/" exact>
-                <Home />
+                    <Home />
                 </Route>
                 <Route path="/about" exact>
-                <About />
+                    <About />
                 </Route>
                 <Route path="/documentation" exact>
-                <Documentation />
+                    <Documentation />
                 </Route>
                 <Route path="/register" exact>
-                <Register />
+                    <Register />
+                </Route>
+                <Route path="/myproject/admin/:id" exact>
+                {            
+                    session!==undefined && session._id && session.token ? ( 
+                        <MyProjectAdmin /> 
+                    )
+                    : (
+                        <Redirect to={{ pathname: "/login"}} />
+                    )
+                    
+                }
                 </Route>
                 <Route path="/myprojects" exact>
                 {            

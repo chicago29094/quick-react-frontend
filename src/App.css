@@ -1,4 +1,100 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+
+/*====================================================================
+Custom properties
+=====================================================================*/
+
+body {
+  font-size: 15pt;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  background-image: url("./images/unsplash-2.jpg");
+  /* background-image: url("./images/stringio.jpg"); */
+  background-color: #b0b0b0;
+  background-repeat: repeat-y;
+  background-size: 100% 120vh;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+div.app-container {
+  padding: 0px;
+  background-color: #ffffff;
+  min-height: 100vh;
+}
+
+:root {
+  --heading-dark: #000000;
+  --heading-red: #bc0202;
+  --heading-midgray: #6f6f6f;
+  --heading-gray: #9f9f9f;
+  --main-nav: #f0f0f0;
+  --sub-nav: rgba(0, 0, 0, 1);
+  --sub-nav-bg-light: rgb(239, 239, 239);  
+  --reflex-blue: rgb(0, 165, 254);
+}
+
+/*====================================================================
+Component: TopHeader
+=====================================================================*/
+
+div.top-header {
+  height: 120px;
+  padding: 0px;
+}
+
+div.top-border {
+  height: 8px;
+  background-image: url('images/sprint3_background.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+
+img.qr-logo {
+  max-height: 90px;
+  margin: 20px;
+}
+
+img.qr-image {
+  max-height: 120px;
+  margin-top: 0px;
+  width: 100%;
+}
+
+/*====================================================================
+Component: main-content
+=====================================================================*/
+
+div.main-content {
+  padding: 20px;
+  min-height: 70vh;
+}
+
+h1.main-page-header-left {
+  margin: 20px 0px 30px 0px;
+  font-size: 1.8rem;
+}
+
+h1.project-page-header-left {
+  margin: 20px 0px 10px 0px;
+  font-size: 1.8rem;
+}
+
+h2.project-page-subheader-left {
+  margin: 0px 0px 30px 0px;
+  font-size: 1.4rem;
+}
+
+/*====================================================================
+Component: footer-content
+=====================================================================*/
+
+div.footer-content {
+  padding: 20px;
+  height: 200px; 
+}
+
 /*====================================================================
 Component: Spinner
 =====================================================================*/
@@ -13,3 +109,99 @@ Component: Spinner
   display: block;
 }
 
+/*====================================================================
+Component: MyProjects
+=====================================================================*/
+
+div.project-list-header {
+  padding: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  background: rgb(112,163,170);
+}
+
+div.project-name span.pname{
+  font-weight: bold;
+}
+
+div.project-name span.pdesc{
+  font-weight: normal;
+}
+
+div.project-item {
+  padding: 8px;
+  font-size: 1rem;
+}
+
+div.project-item:nth-child(even) {
+  background: rgb(214, 239, 246);
+}
+div.project-item:nth-child(odd) {
+  background: rgb(231,241,246);
+}
+
+
+div.file-plus {
+  padding: 0px 10px 0px 0px;
+}
+
+div.file-plus svg:hover {
+  fill:rgb(240, 240, 240);
+  -webkit-filter: drop-shadow( 4px 4px 3px rgba(0, 0, 0, .7));
+  filter: drop-shadow( 4px 4px 2px rgba(0, 0, 0, .7));  
+}
+
+
+div.project-plus {
+  padding: 3px 0px 0px 0px;
+}
+
+.project-item {
+  justify-content: space-between;
+}
+
+div.project-name {
+  flex: 1 1;
+}
+
+div.project-edit {
+  width: 90px;
+  flex: 0 0 auto;
+  text-align:center;
+}
+
+div.project-delete {
+  width: 90px;
+  flex: 0 0 auto;
+  text-align:center;
+}
+
+.delete-dismiss.btn-primary {
+  color: #fff;
+  background-color: #004f6c;
+  border-color: #001d74;
+  margin-right: 10px;
+  font-size: 0.8rem;
+}
+
+.delete-confirm.btn-primary {
+  color: #fff;
+  background-color: #e40000;
+  border-color: #ff0000;
+  font-size: 0.8rem;
+}
+
+
+/*====================================================================
+Component: MyProjectAdmin
+=====================================================================*/
+
+form.project-form {
+  margin-top: 30px;
+}
+
+label.form-label {
+  font-weight: bold;
+}
