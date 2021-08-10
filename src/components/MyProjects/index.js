@@ -1,7 +1,10 @@
 import { useEffect, useState, useContext } from 'react';
+import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { Container, Row, Col, Image, Button } from 'react-bootstrap';
-import Toast from 'react-bootstrap/Toast'
+import Overlay from 'react-bootstrap/Overlay';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Popover from 'react-bootstrap/Popover';
 import { SessionContext } from '../../App';
 import { SessionDispatchContext } from '../../App';
 import { LoadingSpinner } from '../LoadingSpinner';
@@ -19,10 +22,6 @@ export const MyProjects = (props) => {
     const [projectsLoading, setProjectsLoading] = useState(false);
     const [projects, setProjects] = useState([]);
 
-    let showDeleteArray=[];
-
-    const [showDeleteConfirm, setShowDeleteConfirm] = useState(showDeleteArray);
-
     const history = useHistory();
 
     // setInterval(() => {
@@ -32,13 +31,9 @@ export const MyProjects = (props) => {
     /*===================================================================================================*/
 
     useEffect(() => {
-        storage_log('Inside _handleLoadProjects1', Date.now());
-        storage_log('Inside _handleLoadProjects1', session, session.last_access);
 
         async function _handleLoadProjects() {
- 
-            storage_log('Inside _handleLoadProjects2', Date.now());
- 
+  
             const userProject = {
                 _id: "",
                 project_name: "",
@@ -66,8 +61,6 @@ export const MyProjects = (props) => {
 
                 // All responses should be in JSON from the quick-react API
                 const data = await response.json();
-
-                storage_log('MyProjects: useEffect: _handleLoadProjects: ', data, data.length, response.status)
 
                 if (response.status === 200) {
                     setProjects(data);
@@ -133,8 +126,6 @@ export const MyProjects = (props) => {
     
             // All responses should be in JSON from the quick-react API
             const data = await response.json();
-            storage_log('Add New Project', response.status);
-            storage_log('Add New Project', data);
             
             if ( (response.status===200) || (response.status===201) ) {
                 dispatch( { "type": "SessionUpdateLastAccess", "session": session } );
@@ -175,53 +166,74 @@ export const MyProjects = (props) => {
 
     /*===================================================================================================*/
 
-    const _handleDeleteProject = async (event) => {
+    const _handleDeleteProject = async (event, projectID) => {
+
+        event.preventDefault();    
+
+        if ((session === undefined) || (session.token === undefined)) {
+            return;
+        }        
+
+        if ((projectID === undefined) || (projectID === null)) {
+            return;
+        }        
+
+        const API_URI=`${process.env.REACT_APP_QR_API_ENDPOINT}/project/${projectID}`;
+    
+        try {
+            const response = await fetch(API_URI, {
+                "method": 'DELETE',
+                "headers": {
+                    "Content-Type": 'application/json',
+                    "Authorization": `Bearer ${session.token}`                   
+                }
+            });
+    
+            // All responses should be in JSON from the quick-react API
+            const data = await response.json();
+            
+            if ( (response.status===200) || (response.status===201) ) {
+                dispatch( { "type": "SessionUpdateLastAccess", "session": session } );
+                return;
+            }
+            else if ( (response.status===400) || (response.status===401) ) {
+                if (data.ErrorMessage !== undefined) {
+                    console.error(`The selected project could not be deleted. ${data.ErrorMessage}`);
+                    return;
+                }
+                else {
+                    console.error(`The selected project could not be deleted.`);
+                    return;
+                }
+            }
+            else if (response.status===503) {
+                if (data.ErrorMessage !== undefined) {
+                    console.error(`The selected project could not be deleted. ${data.ErrorMessage}`);
+                    return;
+                } 
+                else {
+                    console.error(`The selected project could not be deleted.`);
+                    return;
+                }  
+            }
+            else {
+                console.error(`The selected project could not be deleted.`);
+                return;               
+            }
+    
+            
+        } catch(error) {
+            console.error(`The selected project could not be deleted.`);
+            return;
+        }
+    
 
     }
 
 
     /*===================================================================================================*/
 
-    const _handleShowDeleteConfirm = (index) => {
-
-        console.log('_handleShowDeleteConfirm0', showDeleteConfirm)
-        console.log('_handleShowDeleteConfirm1', index);
-
-        if (showDeleteConfirm[index]===undefined) {
-            return false;
-        }
-
-        console.log('_handleShowDeleteConfirm2', index);
-
-        // setShowDeleteConfirm(showDeleteArray);
-        return showDeleteConfirm[index];
-    }
-
-    /*===================================================================================================*/
-
-    const _handleToggleDeleteConfirm = (index) => {
-        console.log('_handleToggleDeleteConfirm0', showDeleteConfirm)
-        console.log('_handleToggleDeleteConfirm1', index);
-        
-        for (let key in showDeleteConfirm) {
-            showDeleteArray[key] = showDeleteConfirm[key];
-        }
-
-        if (showDeleteArray[index]===undefined) {
-            showDeleteArray[index]=true;
-            console.log('_handleToggleDeleteConfirm2', index);
-        }
-        else {
-            console.log('_handleToggleDeleteConfirm3', index);
-            showDeleteArray[index]=!showDeleteArray[index];
-        }
-        setShowDeleteConfirm(showDeleteArray);
-        return;
-    }
-
-    /*===================================================================================================*/
-
-
+    
     return (
         <div>
             <h1 className="main-page-header-left">MY PROJECTS</h1>
@@ -254,28 +266,36 @@ export const MyProjects = (props) => {
                                 </Col>
                                 <Col className="project-edit">
                                     <Row>
-                                        <FileEdit color="#60939A" size="24" alt="Edit Project" onClick={_handleAddProject} />
+                                        <Link to={`/myproject/admin/${project._id}`} >
+                                            <FileEdit color="#60939A" size="24" alt="Edit Project" />
+                                        </Link>
                                     </Row>
                                 </Col>
                                 <Col className="project-delete">
                                     <Row>
-                                        <FileDelete color="#60939A" size="24" alt="Delete Project" 
-                                            onClick = { () => { _handleToggleDeleteConfirm(index) } } />
 
-                                        <Toast className="delete-toast"  
-                                            show = { _handleShowDeleteConfirm(index) }
-                                            onClose = { () =>  {_handleToggleDeleteConfirm(index)} } >
-                                            <Toast.Header>
-                                                <FileDelete color="#60939A" size="16" alt="Delete Project" />
-                                                <strong className="me-auto">Confirm Delete Project</strong>
-                                                <small>Close</small>
-                                            </Toast.Header>
-                                            <Toast.Body>
-                                                Click to <Button 
-                                                            onClick={ () => {_handleShowDeleteConfirm(project._id)} } 
-                                                        >Confirm Delete</Button>
-                                            </Toast.Body>
-                                        </Toast>
+                                        <OverlayTrigger
+                                            trigger = "click"
+                                            key = {`trigger-${index}`}
+                                            placement = 'bottom'
+                                            rootClose = {true}
+                                            rootCloseEvent= 'click'
+                                            overlay = {
+                                                <Popover id = {`trigger-${index}`} >
+                                                <Popover.Header as="h3">Confirm Delete Project</Popover.Header>
+                                                <Popover.Body>
+                                                    <Button className="delete-dismiss" 
+                                                        onClick={ (event) => {document.body.click() } }
+                                                    >Dismiss</Button>
+                                                    <Button className="delete-confirm" 
+                                                        onClick={ (event) => {_handleDeleteProject(event, project._id)} } 
+                                                    >Confirm Delete</Button>
+                                                </Popover.Body>
+                                                </Popover>
+                                            }
+                                        >
+                                        <FileDelete color="#60939A" size="24" alt="Delete Project" />
+                                        </OverlayTrigger>
 
                                     </Row>
                                 </Col>

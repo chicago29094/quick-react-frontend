@@ -76,6 +76,15 @@ h1.main-page-header-left {
   font-size: 1.8rem;
 }
 
+h1.project-page-header-left {
+  margin: 20px 0px 10px 0px;
+  font-size: 1.8rem;
+}
+
+h2.project-page-subheader-left {
+  margin: 0px 0px 30px 0px;
+  font-size: 1.4rem;
+}
 
 /*====================================================================
 Component: footer-content
@@ -167,4 +176,32 @@ div.project-delete {
   width: 90px;
   flex: 0 0 auto;
   text-align:center;
+}
+
+.delete-dismiss.btn-primary {
+  color: #fff;
+  background-color: #004f6c;
+  border-color: #001d74;
+  margin-right: 10px;
+  font-size: 0.8rem;
+}
+
+.delete-confirm.btn-primary {
+  color: #fff;
+  background-color: #e40000;
+  border-color: #ff0000;
+  font-size: 0.8rem;
+}
+
+
+/*====================================================================
+Component: MyProjectAdmin
+=====================================================================*/
+
+form.project-form {
+  margin-top: 30px;
+}
+
+label.form-label {
+  font-weight: bold;
 }
