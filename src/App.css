@@ -76,6 +76,15 @@ h1.main-page-header-left {
   font-size: 1.8rem;
 }
 
+h1.project-page-header-left {
+  margin: 20px 0px 10px 0px;
+  font-size: 1.8rem;
+}
+
+h2.project-page-subheader-left {
+  margin: 0px 0px 30px 0px;
+  font-size: 1.4rem;
+}
 
 /*====================================================================
 Component: footer-content
@@ -131,4 +140,68 @@ div.project-item:nth-child(even) {
 }
 div.project-item:nth-child(odd) {
   background: rgb(231,241,246);
+}
+
+
+div.file-plus {
+  padding: 0px 10px 0px 0px;
+}
+
+div.file-plus svg:hover {
+  fill:rgb(240, 240, 240);
+  -webkit-filter: drop-shadow( 4px 4px 3px rgba(0, 0, 0, .7));
+  filter: drop-shadow( 4px 4px 2px rgba(0, 0, 0, .7));  
+}
+
+
+div.project-plus {
+  padding: 3px 0px 0px 0px;
+}
+
+.project-item {
+  justify-content: space-between;
+}
+
+div.project-name {
+  flex: 1 1;
+}
+
+div.project-edit {
+  width: 90px;
+  flex: 0 0 auto;
+  text-align:center;
+}
+
+div.project-delete {
+  width: 90px;
+  flex: 0 0 auto;
+  text-align:center;
+}
+
+.delete-dismiss.btn-primary {
+  color: #fff;
+  background-color: #004f6c;
+  border-color: #001d74;
+  margin-right: 10px;
+  font-size: 0.8rem;
+}
+
+.delete-confirm.btn-primary {
+  color: #fff;
+  background-color: #e40000;
+  border-color: #ff0000;
+  font-size: 0.8rem;
+}
+
+
+/*====================================================================
+Component: MyProjectAdmin
+=====================================================================*/
+
+form.project-form {
+  margin-top: 30px;
+}
+
+label.form-label {
+  font-weight: bold;
 }
