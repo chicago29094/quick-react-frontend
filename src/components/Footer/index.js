@@ -6,7 +6,7 @@ export const Footer = (props) => {
     return (
         <div className="footer-content">
             <Container>
-               <h1 className="main-page-header-left">FOOTER</h1>
+               <p class="copyright">&copy; 2021, Harry Anastopoulos, All Rights Reserved</p>
             </Container>
         </div>
     )

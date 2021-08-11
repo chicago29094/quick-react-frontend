@@ -1,6 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
 /*====================================================================
 Custom properties
 =====================================================================*/
@@ -32,6 +32,11 @@ div.app-container {
   --sub-nav: rgba(0, 0, 0, 1);
   --sub-nav-bg-light: rgb(239, 239, 239);  
   --reflex-blue: rgb(0, 165, 254);
+}
+
+.copyright {
+ text-align:center;
+ font-size: 1rem;
 }
 
 /*====================================================================
@@ -204,4 +209,41 @@ form.project-form {
 
 label.form-label {
   font-weight: bold;
+}
+
+.project-form button{
+  margin-left: 20px;
+}
+
+.quickreact-code {
+  background-color: black;
+  color: #9EE7FD;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 400;
+}
+
+.form-control.quickreact-code {
+  background-color: black;
+  color: #9EE7FD;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 400;
+}
+
+
+/*====================================================================
+Component: Login
+=====================================================================*/
+
+.login-form input {
+    font-size: 1rem;
+    padding: 5px;
+    margin: 8px;
+}
+
+.login-form label {
+  margin: 5px;
+}
+
+.login-form fieldset {
+  margin: 5px;
 }
