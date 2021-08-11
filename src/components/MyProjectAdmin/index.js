@@ -35,6 +35,7 @@ export const MyProjectAdmin = (props) => {
         "project_markup": "",
         "project_filepath": "",
         "project_archive": "",
+        "update_type": "",
     }
       
     const [formValues, setFormValues] = useState(initialFormValues);
@@ -130,8 +131,8 @@ export const MyProjectAdmin = (props) => {
     /*===============================================================================*/
     // handle user form login request 
 
-    const _handleProjectUpdate = async (event) => {
-
+    const _handleProjectUpdate = async (event, update_type) => {
+        
         event.preventDefault();
 
         if ((session === undefined) || (session.token === undefined) || (projectID === null ) ) {
@@ -140,7 +141,10 @@ export const MyProjectAdmin = (props) => {
 
         setFormStatus({showStatus:true, showSpinner:true, message: { __html: ""} });
 
-        const API_URI=`${process.env.REACT_APP_QR_API_ENDPOINT}/project/${projectID}`;
+        let API_URI=`${process.env.REACT_APP_QR_API_ENDPOINT}/project/${projectID}`;
+        if (update_type==='zip_submit') {
+            API_URI=`${process.env.REACT_APP_QR_API_ENDPOINT}/project/download/${projectID}`;
+        }
 
         try {
             const response = await fetch(API_URI, {
@@ -152,11 +156,29 @@ export const MyProjectAdmin = (props) => {
                 }
             });
 
+            if (update_type==='zip_submit') {  
+                const data = await response.blob();
+                // console.log(data);
+                // const file = window.URL.createObjectURL(data);
+                // console.log(file);
+                // window.location.assign(file);    
+
+                let zipLink = document.createElement('a');
+                zipLink.href = URL.createObjectURL(data);
+                zipLink.setAttribute('download', 'quick-react-project.zip');
+                zipLink.click();
+
+                setFormStatus({showStatus:true, showSpinner:false, message: { __html: "Your project updates have been saved."} } );
+                setProjectUpdated(true);
+                setTimeout( () => {setFormStatus({showStatus:false, showSpinner:false, message: { __html: ""} });}, 5000);              
+                return;     
+            }
+            
             // All responses should be in JSON from the quick-react API
             const data = await response.json();
             storage_log('_handleProjectUpdate', response.status);
             storage_log('_handleProjectUpdate', data);
-            
+
             if ( (response.status===200) || (response.status===201) ) {
                 setFormStatus({showStatus:true, showSpinner:false, message: { __html: "Your project updates have been saved."} } );
                 setProjectUpdated(true);
@@ -234,12 +256,21 @@ export const MyProjectAdmin = (props) => {
               onChange={_handleChange}
               placeholder=""
               style={{ height: '400px' }}
+              className="quickreact-code"
             />            
           </Form.Group>
 
-          <Button variant="primary" type="submit" disabled={formError}>
+          <Button variant="primary" id="update_submit" name="update_submit" onClick={ (event) => _handleProjectUpdate(event, "update_submit") } disabled={formError}>
             Update Quick-React Project
           </Button>
+
+          <Button variant="secondary" id="zip_submit" name="zip_submit"  onClick={ (event) => _handleProjectUpdate(event, "zip_submit") } disabled={formError}>
+            Download React Zip Package
+          </Button>          
+
+          {/* <Button variant="secondary" id="gzip_submit" name="gzip_submit"  onClick={ (event) => _handleProjectUpdate(event, "gzip_submit") } disabled={formError}>
+            Download React GZIP Package
+          </Button>           */}
 
         </Form>
         <LoadingSpinner props={formStatus} />

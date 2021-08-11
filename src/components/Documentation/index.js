@@ -7,7 +7,7 @@ export const Documentation = (props) => {
         <div>
            <h1 className="main-page-header-left">DOCUMENTATION</h1>
 
-    
+            <p>Please check back soon for documentation regarding the full Quick-React API.</p>
 
         </div>
     )
