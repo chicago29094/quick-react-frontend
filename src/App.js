@@ -132,7 +132,6 @@ export const App = (props) => {
         try {
             const response = await fetch(API_URI, {
                 "method": 'GET',
-                "mode": "no-cors",
                 "headers": {
                     "Content-Type": 'application/json',
                     "Authorization": `Bearer ${storageJSON.token}`

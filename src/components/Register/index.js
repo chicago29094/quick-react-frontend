@@ -66,7 +66,6 @@ const _handleVerifyForm = (event) => {
         try {
             const response = await fetch(API_URI, {
                 "method": 'POST',
-                "mode": "no-cors",
                 "body": JSON.stringify(formValues),
                 "headers": {
                     "Content-Type": 'application/json'

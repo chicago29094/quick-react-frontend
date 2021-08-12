@@ -53,7 +53,6 @@ export const MyProjects = (props) => {
             try {
                 const response = await fetch(API_URI, {
                     "method": 'GET',
-                    "mode": "no-cors",
                     "headers": {
                         "Content-Type": 'application/json',
                         "Authorization": `Bearer ${session.token}`
@@ -118,7 +117,6 @@ export const MyProjects = (props) => {
         try {
             const response = await fetch(API_URI, {
                 "method": 'POST',
-                "mode": "no-cors",
                 "body": JSON.stringify(userProject),
                 "headers": {
                     "Content-Type": 'application/json',
@@ -185,7 +183,6 @@ export const MyProjects = (props) => {
         try {
             const response = await fetch(API_URI, {
                 "method": 'DELETE',
-                "mode": "no-cors",
                 "headers": {
                     "Content-Type": 'application/json',
                     "Authorization": `Bearer ${session.token}`                   
