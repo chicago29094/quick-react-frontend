@@ -31,6 +31,7 @@ export const MyProjectAdmin = (props) => {
     }
 
     const initialFormValues = {
+        "project_directory" : "",
         "project_name": "",
         "project_description": "",
         "project_markup": "",
@@ -79,6 +80,7 @@ export const MyProjectAdmin = (props) => {
                 storage_log('MyProjects: useEffect: _handleLoadProjects: ', data, data.length, response.status)
 
                 if (response.status === 200) {
+                    if (data.project_directory===null) data.project_directory="";
                     if (data.project_name===null) data.project_name="";
                     if (data.project_description===null) data.project_description="";
                     if (data.project_markup===null) data.project_markup="";
@@ -229,6 +231,11 @@ export const MyProjectAdmin = (props) => {
             project root directory.</p>
 
         <Form onSubmit={_handleProjectUpdate} className="project-form">
+
+          <Form.Group className="mb-3" controlId="project_directory">
+            <Form.Label>*Project Directory (create-react-app aap name/directory</Form.Label>
+            <Form.Control type="project_directory" onChange={_handleChange} value={formValues.project_directory} placeholder="Project Directory" required/>
+          </Form.Group>
 
           <Form.Group className="mb-3" controlId="project_name">
             <Form.Label>*Project Name</Form.Label>

@@ -37,6 +37,7 @@ export const MyProjects = (props) => {
   
             const userProject = {
                 _id: "",
+                project_directory: "",
                 project_name: "",
                 project_description: "",
                 project_markup: "",
@@ -105,6 +106,7 @@ export const MyProjects = (props) => {
         event.preventDefault();
 
         const userProject = {
+            project_directory: "my-app",
             project_name: "New Unedited Project",
             project_description: "Add your project description here.",
         };
