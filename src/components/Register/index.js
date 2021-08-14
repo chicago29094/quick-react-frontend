@@ -3,7 +3,7 @@ import { Form, FloatingLabel, Button, Alert } from "react-bootstrap"
 import { useHistory } from "react-router-dom";
 import { LoadingSpinner } from '../LoadingSpinner';
 import { Container, Row, Col } from 'react-bootstrap';
-import BASE_API_URL from './utils/apiConfig';
+import BASE_API_URL from '../../utils/apiConfig';
 import storage_log from "../../utils/storage_log";
 
 export const Register = (props) => {

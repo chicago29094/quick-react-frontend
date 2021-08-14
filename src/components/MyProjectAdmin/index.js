@@ -9,7 +9,7 @@ import Popover from 'react-bootstrap/Popover';
 import { SessionContext } from '../../App';
 import { SessionDispatchContext } from '../../App';
 import { LoadingSpinner } from '../LoadingSpinner';
-import BASE_API_URL from './utils/apiConfig';
+import BASE_API_URL from '../../utils/apiConfig';
 import { storage_log } from '../../utils/storage_log.js'
 import { PlusCircleFill as FilePlus} from 'react-bootstrap-icons';
 import { FileCodeFill as FileEdit} from 'react-bootstrap-icons';
