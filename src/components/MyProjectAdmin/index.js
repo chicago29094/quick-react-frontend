@@ -233,7 +233,7 @@ export const MyProjectAdmin = (props) => {
         <Form onSubmit={_handleProjectUpdate} className="project-form">
 
           <Form.Group className="mb-3" controlId="project_directory">
-            <Form.Label>*Project Directory (create-react-app aap name/directory</Form.Label>
+            <Form.Label>*Project Directory <span className='projects-heading-light' >(create-react-app App name/directory)</span></Form.Label>
             <Form.Control type="project_directory" onChange={_handleChange} value={formValues.project_directory} placeholder="Project Directory" required/>
           </Form.Group>
 

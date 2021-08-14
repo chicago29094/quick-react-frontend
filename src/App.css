@@ -211,6 +211,12 @@ label.form-label {
   font-weight: bold;
 }
 
+span.projects-heading-light {
+  font-weight: normal;
+  color: #404040;
+  font-size: 1rem;
+}
+
 .project-form button{
   margin-left: 20px;
 }
