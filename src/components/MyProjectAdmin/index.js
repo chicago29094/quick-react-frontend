@@ -168,7 +168,7 @@ export const MyProjectAdmin = (props) => {
 
                 let zipLink = document.createElement('a');
                 zipLink.href = URL.createObjectURL(data);
-                zipLink.setAttribute('download', 'quick-react-project.zip');
+                zipLink.setAttribute('download', `${formValues.project_directory}.zip`);
                 zipLink.click();
 
                 setFormStatus({showStatus:true, showSpinner:false, message: { __html: "Your project updates have been saved."} } );
