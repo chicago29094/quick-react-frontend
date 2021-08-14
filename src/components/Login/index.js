@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { SessionContext } from '../../App';
 import { SessionDispatchContext } from '../../App';
 import { LoadingSpinner } from '../LoadingSpinner';
+import BASE_API_URL from './utils/apiConfig';
 import { storage_log } from '../../utils/storage_log.js'
  
 export const Login = (props) => {
@@ -45,7 +46,7 @@ export const Login = (props) => {
     //storage_log('Login: _handleUserLogin: ', formValues);
     setFormStatus({showStatus:true, showSpinner:true, message: { __html: ""} });
 
-    const API_URI=`${process.env.REACT_APP_QR_API_ENDPOINT}/api/login`;
+    const API_URI=`${BASE_API_URL}/api/login`;
 
     try {
         const response = await fetch(API_URI, {

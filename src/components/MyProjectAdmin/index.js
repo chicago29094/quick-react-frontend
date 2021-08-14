@@ -9,6 +9,7 @@ import Popover from 'react-bootstrap/Popover';
 import { SessionContext } from '../../App';
 import { SessionDispatchContext } from '../../App';
 import { LoadingSpinner } from '../LoadingSpinner';
+import BASE_API_URL from './utils/apiConfig';
 import { storage_log } from '../../utils/storage_log.js'
 import { PlusCircleFill as FilePlus} from 'react-bootstrap-icons';
 import { FileCodeFill as FileEdit} from 'react-bootstrap-icons';
@@ -61,7 +62,7 @@ export const MyProjectAdmin = (props) => {
             }
 
             // The endpoint for retrieving a user project.  The user's bearer token will provide the user context to the back ebd.
-            const API_URI = `${process.env.REACT_APP_QR_API_ENDPOINT}/project/${projectID}`;
+            const API_URI = `${BASE_API_URL}/project/${projectID}`;
 
             try {
                 const response = await fetch(API_URI, {
@@ -141,9 +142,9 @@ export const MyProjectAdmin = (props) => {
 
         setFormStatus({showStatus:true, showSpinner:true, message: { __html: ""} });
 
-        let API_URI=`${process.env.REACT_APP_QR_API_ENDPOINT}/project/${projectID}`;
+        let API_URI=`${BASE_API_URL}/project/${projectID}`;
         if (update_type==='zip_submit') {
-            API_URI=`${process.env.REACT_APP_QR_API_ENDPOINT}/project/download/${projectID}`;
+            API_URI=`${BASE_API_URL}/project/download/${projectID}`;
         }
 
         try {

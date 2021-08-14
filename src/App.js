@@ -9,6 +9,8 @@ import { Logout } from './components/Logout';
 import { Footer } from './components/Footer';
 import './App.css';
 import storage_log from './utils/storage_log';
+import BASE_API_URL from './utils/apiConfig';
+
 
 // Declare useContext context to pass session state and dispatch context to lower components
 export const SessionContext = React.createContext(); 
@@ -127,7 +129,7 @@ export const App = (props) => {
         }
       
         // There is a store user_id and JWT in local storage.  Let's see if it is valid and retrieve the corresponding user record.
-        const API_URI=`${process.env.REACT_APP_QR_API_ENDPOINT}/api/user/${storageJSON._id}`;
+        const API_URI=`${BASE_API_URL}/api/user/${storageJSON._id}`;
 
         try {
             const response = await fetch(API_URI, {

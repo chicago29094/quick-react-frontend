@@ -8,6 +8,7 @@ import Popover from 'react-bootstrap/Popover';
 import { SessionContext } from '../../App';
 import { SessionDispatchContext } from '../../App';
 import { LoadingSpinner } from '../LoadingSpinner';
+import BASE_API_URL from './utils/apiConfig';
 import { storage_log } from '../../utils/storage_log.js'
 import { PlusCircleFill as FilePlus} from 'react-bootstrap-icons';
 import { FileCodeFill as FileEdit} from 'react-bootstrap-icons';
@@ -48,7 +49,7 @@ export const MyProjects = (props) => {
             }
 
             // The endpoint for retrieving all user projects.  The user's bearer token will provide the user context to the back ebd.
-            const API_URI = `${process.env.REACT_APP_QR_API_ENDPOINT}/project/`;
+            const API_URI = `${BASE_API_URL}/project/`;
 
             try {
                 const response = await fetch(API_URI, {
@@ -112,7 +113,7 @@ export const MyProjects = (props) => {
             return;
         }        
 
-        const API_URI=`${process.env.REACT_APP_QR_API_ENDPOINT}/project/`;
+        const API_URI=`${BASE_API_URL}/project/`;
     
         try {
             const response = await fetch(API_URI, {
@@ -178,7 +179,7 @@ export const MyProjects = (props) => {
             return;
         }        
 
-        const API_URI=`${process.env.REACT_APP_QR_API_ENDPOINT}/project/${projectID}`;
+        const API_URI=`${BASE_API_URL}/project/${projectID}`;
     
         try {
             const response = await fetch(API_URI, {

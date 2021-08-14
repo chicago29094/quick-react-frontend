@@ -3,6 +3,7 @@ import { Form, FloatingLabel, Button, Alert } from "react-bootstrap"
 import { useHistory } from "react-router-dom";
 import { LoadingSpinner } from '../LoadingSpinner';
 import { Container, Row, Col } from 'react-bootstrap';
+import BASE_API_URL from './utils/apiConfig';
 import storage_log from "../../utils/storage_log";
 
 export const Register = (props) => {
@@ -61,7 +62,7 @@ const _handleVerifyForm = (event) => {
 
         setFormStatus({showStatus:true, showSpinner:true, message: { __html: ""} });
     
-        const API_URI=`${process.env.REACT_APP_QR_API_ENDPOINT}/api/register`;
+        const API_URI=`${BASE_API_URL}/api/register`;
     
         try {
             const response = await fetch(API_URI, {
