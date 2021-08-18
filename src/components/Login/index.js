@@ -48,8 +48,8 @@ export const Login = (props) => {
 
     const API_URI=`${BASE_API_URL}/api/login`;
 
-    console.log(`BASE_API_URL=${BASE_API_URL}`);
-    console.log('API_URI=', API_URI);
+    // console.log(`BASE_API_URL=${BASE_API_URL}`);
+    // console.log('API_URI=', API_URI);
 
     try {
         const response = await fetch(API_URI, {
