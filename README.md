@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+![Quick-React](https://quick-react-tool.netlify.app/static/media/quick_react_v3_trans.3314ba4c.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# quick-react
+*A node application to create React hook-based boilerplate files automatically from a simple outline description.*
 
-## Available Scripts
+___
+![Quick-React](https://quick-react-tool.netlify.app/static/media/quick_react_project.png)
+___
 
-In the project directory, you can run:
+### Description
+Quick-React is a Website and VS Code extension developed to make the development of hook-based React projects much faster by eliminating some of the manual setup work.  Although scripts such as **create-react-app**, initialize a great deal of the scaffolding for a typical SPA Website, project setup could benefit from additional configuration assistance, as long as the process is simple, intuitive, and fast
 
-### `yarn start`
+Quick-React addresses this need by utilizing a simple JSX-style markup format, in a simple to understand outline format, that is parsed into a component data-structure by the Quick-React Website or VS Code extension.  This data is then used to generate either a ZIP archive of the starting React directories and files, when the Quick-React Website is used, or is injected directly into your project via the VS Code extension when working locally.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**Link to GitHub Repository site Quick-React Back-end API:**
+https://github.com/chicago29094/quick-react
+**Link to GitHub Repository site Quick-React Front-End:**
+https://github.com/chicago29094/quick-react-frontend
+**Link to GitHub Repository site Quick-React VS Code Extension:**
+https://github.com/chicago29094/quick-react-code
+**Link to Deployed public Website:**
+https://quick-react-tool.netlify.app/
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Technologies used:
+- HTML5
+- Custom designed n-Ary tree JavaScript class library and Quick-React lexing, parsing, and component generation library.
+- Custom designed VS Code Extension for in-editor Quick-React markup coding and React project creation 
+- CSS: Flexbox, React-Bootstrap, Nested Display Components, Responsive Design
+- JavaScript: loops, aync/await JSON data fetching through structured API calls, math methods/randomization, array methods, complex object data structures, arrow functions, n-ary trees, stacks, queues, and map data structures.
+- Testing: Mocha framework and Chai assertion testing of Quick-React tree library functions 
+- SPA Website Architecture, React, Bootstrap, React-Bootstrap, controlled Components and Controlled Forms/User Input, useState, useEffect, props, and React hooks
+- Node.js, Express, Mongoose, and MongoDB object-oriented database architecture
+___
+## Installation Requirements
+- No additional libraries or special add-ons needed beyond what is specified in the repository package.json file.
+- The site has the following module dependencies: bootstrap, bootstrap-icons, react-bootstrap, react-bootstrap-icons, react, react-dom, react-router, react-router-dom, react-script
+- If for some reason the installation of a component is required use npm install in the project's root directory to install all of the dependencies.
+- Download the repo from https://github.com/chicago29094/quick-react-frontend
+- To deploy locally on your own computer, utilize yarn start to start the execution of the frontend API.
 
-### `yarn test`
+## Contribution Instructions
+- Contributions, suggestions, feature requests, or bug reports can be e-mailed to quickreact@uswide.net.
+- Input can also be provided by contacting the developer Harry Anastopoulos via the public GitHub repository for Quick-React or the Quick-React website.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Lessons Learned/Ongoing Issues:
+### Lessons Learned
+- VS Code is wonderful to work with and provides a rich API for extension building.
+- The n-Ary tree library was fairly easy to build using new features in JavaScript E6+ despite the immutable nature of JavaScript strings.
+- The nested nature of React's components and prop passing lends itself readily to an outline or wire-frame markup/description.
+- JWT is flexible but additional security can be utilized for more critical projects.
 
-### `yarn build`
+### Ongoing Issues / Future Updates
+- More test should be performed for more edge cases and more complex markup.
+- A JSX aware editor on the frontend for Web-based project markup would be a welcome addition.
+- The introduction of project categories or keywords would be helpful in managing projects.
+- A system for handling a larger volume of projects should be incorporated so that the user isn't forced to delete older projects.
+- In-editor syntax highlighting, checking, and assistance within VS Code would be helpful when coding Quick-React project markup.
+- A template based approach to component generation would add flexibility for users instead of fixed boilerplate content.
+- More flexibility can be developed for sequenced markup attributes.
+- Direct injection of components into files such as index.js and App.js would be a powerful addition.
+- Direct in-place replacement of some of the other create-react-app generic boilerplate would add flexibility to the Quick-React system.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
