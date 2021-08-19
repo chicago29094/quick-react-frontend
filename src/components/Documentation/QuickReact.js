@@ -20,13 +20,13 @@ export const QuickReact = (props) => {
                 </dl>
                 <h2 id="functions">Functions</h2>
                 <dl>
-                <dt><a href="#output_index">output_index(useBootstrap, quickReact, NaryTree, QuickReactElement, NaryNode)</a> ⇒ <code>undefined</code></dt>
+                <dt><a href="#output_index">output_index(useBootstrap, quickReact, NaryTree, QuickReactElement, NaryNode)</a> ⇒ <code>string</code></dt>
                 <dd><p>Output the index.js file as index_qr.js for this React project</p>
                 </dd>
-                <dt><a href="#output_app">output_app(useBootstrap, quickReact, NaryTree, QuickReactElement, NaryNode)</a> ⇒ <code>undefined</code></dt>
+                <dt><a href="#output_app">output_app(useBootstrap, quickReact, NaryTree, QuickReactElement, NaryNode)</a> ⇒ <code>string</code></dt>
                 <dd><p>Output the App.js file as App_qr.js for this React project</p>
                 </dd>
-                <dt><a href="#output_component">output_component(useBootstrap, quickReact, NaryTree, QuickReactElement, NaryNode)</a> ⇒ <code>undefined</code></dt>
+                <dt><a href="#output_component">output_component(useBootstrap, quickReact, NaryTree, QuickReactElement, NaryNode)</a> ⇒ <code>string</code></dt>
                 <dd><p>Output individual component files for the React project</p>
                 </dd>
                 </dl>
@@ -452,10 +452,10 @@ export const QuickReact = (props) => {
                 </tbody>
                 </table>
                 <p><a name="output_index"></a></p>
-                <h2 id="output_indexusebootstrap-quickreact-narytree-quickreactelement-narynode-⇒-c92c">output_index(useBootstrap, quickReact, NaryTree, QuickReactElement, NaryNode) ⇒ <code>undefined</code></h2>
+                <h2 id="output_indexusebootstrap-quickreact-narytree-quickreactelement-narynode-⇒-c92c">output_index(useBootstrap, quickReact, NaryTree, QuickReactElement, NaryNode) ⇒ <code>string</code></h2>
                 <p>Output the index.js file as index_qr.js for this React project</p>
                 <p><strong>Kind</strong>: global function  <br />
-                <strong>Returns</strong>: <code>undefined</code> - Outputs the index.js file as index_qr.js for this React project  </p>
+                <strong>Returns</strong>: <code>string</code> - Outputs the code for the content of the index.js file as index_qr.js for this React project  </p>
                 <table>
                 <thead>
                 <tr>
@@ -493,10 +493,10 @@ export const QuickReact = (props) => {
                 </tbody>
                 </table>
                 <p><a name="output_app"></a></p>
-                <h2 id="output_appusebootstrap-quickreact-narytree-quickreactelement-narynode-⇒-c99c">output_app(useBootstrap, quickReact, NaryTree, QuickReactElement, NaryNode) ⇒ <code>undefined</code></h2>
+                <h2 id="output_appusebootstrap-quickreact-narytree-quickreactelement-narynode-⇒-c99c">output_app(useBootstrap, quickReact, NaryTree, QuickReactElement, NaryNode) ⇒ <code>string</code></h2>
                 <p>Output the App.js file as App_qr.js for this React project</p>
                 <p><strong>Kind</strong>: global function  <br />
-                <strong>Returns</strong>: <code>undefined</code> - - Outputs the App.js file as App_qr.js for this React project  </p>
+                <strong>Returns</strong>: <code>string</code> - - Outputs the contents of the App.js file as App_qr.js for this React project  </p>
                 <table>
                 <thead>
                 <tr>
@@ -534,10 +534,10 @@ export const QuickReact = (props) => {
                 </tbody>
                 </table>
                 <p><a name="output_component"></a></p>
-                <h2 id="output_componentusebootstrap-quickreact-narytree-quickreactelement-narynode-⇒-c106c">output_component(useBootstrap, quickReact, NaryTree, QuickReactElement, NaryNode) ⇒ <code>undefined</code></h2>
+                <h2 id="output_componentusebootstrap-quickreact-narytree-quickreactelement-narynode-⇒-c106c">output_component(useBootstrap, quickReact, NaryTree, QuickReactElement, NaryNode) ⇒ <code>string</code></h2>
                 <p>Output individual component files for the React project</p>
                 <p><strong>Kind</strong>: global function  <br />
-                <strong>Returns</strong>: <code>undefined</code> - Outputs a specific component file for this React project  </p>
+                <strong>Returns</strong>: <code>strings</code> - Outputs the content of a specific component file for this React project  </p>
                 <table>
                 <thead>
                 <tr>
