@@ -26,10 +26,16 @@ export const MainContent = (props) => {
                 <Route path="/" exact>
                     <Home />
                 </Route>
+                <Route path="/login" exact>
+                    <Home />
+                </Route>
+                <Route path="/logout" exact>
+                    <Home />
+                </Route>                                
                 <Route path="/about" exact>
                     <About />
                 </Route>
-                <Route path="/documentation" exact>
+                <Route path="/documentation">
                     <Documentation />
                 </Route>
                 <Route path="/register" exact>

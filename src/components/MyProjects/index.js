@@ -70,26 +70,26 @@ export const MyProjects = (props) => {
                 }
                 else if (response.status === 401) {
                     if (data.ErrorMessage !== undefined) {
-                        console.error(`An error was encountered while requesting the user\'s quick-react projects. ${data.ErrorMessage}`);
+                        console.error(`An error was encountered while requesting the user's quick-react projects. ${data.ErrorMessage}`);
                         return;
                     }
                     else {
-                        console.error(`An error was encountered while requesting the user\'s quick-react projects.`);
+                        console.error(`An error was encountered while requesting the user's quick-react projects.`);
                         return;
                     }
                 }
                 else if (response.status === 503) {
                     if (data.ErrorMessage !== undefined) {
-                        console.error(`An error was encountered while requesting the user\'s quick-react projects. ${data.ErrorMessage}`);
+                        console.error(`An error was encountered while requesting the user's quick-react projects. ${data.ErrorMessage}`);
                         return;
                     }
                     else {
-                        console.error(`An error was encountered while requesting the user\'s quick-react projects.`);
+                        console.error(`An error was encountered while requesting the user's quick-react projects.`);
                         return;
                     }
                 }
             } catch (error) {
-                console.error(`An error was encountered while requesting the user\'s quick-react projects.`);
+                console.error(`An error was encountered while requesting the user's quick-react projects.`);
                 return;
             }
         }
@@ -109,6 +109,7 @@ export const MyProjects = (props) => {
             project_directory: "my-app",
             project_name: "New Unedited Project",
             project_description: "Add your project description here.",
+            project_markup:`<>\n<Config />\n<App>\n</App>\n</>\n\n`,
         };
 
         if ((session === undefined) || (session.token === undefined)) {

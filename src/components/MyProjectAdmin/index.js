@@ -91,26 +91,26 @@ export const MyProjectAdmin = (props) => {
                 }
                 else if (response.status === 401) {
                     if (data.ErrorMessage !== undefined) {
-                        console.error(`An error was encountered while requesting the user\'s quick-react project. ${data.ErrorMessage}`);
+                        console.error(`An error was encountered while requesting the user's quick-react project. ${data.ErrorMessage}`);
                         return;
                     }
                     else {
-                        console.error(`An error was encountered while requesting the user\'s quick-react project.`);
+                        console.error(`An error was encountered while requesting the user's quick-react project.`);
                         return;
                     }
                 }
                 else if (response.status === 503) {
                     if (data.ErrorMessage !== undefined) {
-                        console.error(`An error was encountered while requesting the user\'s quick-react project. ${data.ErrorMessage}`);
+                        console.error(`An error was encountered while requesting the user's quick-react project. ${data.ErrorMessage}`);
                         return;
                     }
                     else {
-                        console.error(`An error was encountered while requesting the user\'s quick-react project.`);
+                        console.error(`An error was encountered while requesting the user's quick-react project.`);
                         return;
                     }
                 }
             } catch (error) {
-                console.error(`An error was encountered while requesting the user\'s quick-react project.`);
+                console.error(`An error was encountered while requesting the user's quick-react project.`);
                 return;
             }
         }
@@ -263,6 +263,7 @@ export const MyProjectAdmin = (props) => {
               value={formValues.project_markup}
               onChange={_handleChange}
               placeholder=""
+              wrap="off"
               style={{ height: '400px' }}
               className="quickreact-code"
             />            

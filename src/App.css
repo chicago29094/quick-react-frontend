@@ -6,7 +6,7 @@ Custom properties
 =====================================================================*/
 
 body {
-  font-size: 15pt;
+  font-size: 12pt;
   margin-top: 0px;
   margin-bottom: 0px;
   background-image: url("./images/unsplash-2.jpg");
@@ -37,6 +37,7 @@ div.app-container {
 .copyright {
  text-align:center;
  font-size: 1rem;
+ margin-top: 70px;
 }
 
 /*====================================================================
@@ -46,6 +47,7 @@ Component: TopHeader
 div.top-header {
   height: 120px;
   padding: 0px;
+  background-color: #f5f5f5;
 }
 
 div.top-border {
@@ -96,8 +98,9 @@ Component: footer-content
 =====================================================================*/
 
 div.footer-content {
-  padding: 20px;
-  height: 200px; 
+  padding: 20px 20px 20px 20px;
+  height: 150px; 
+  align-self: flex-end;
 }
 
 /*====================================================================
@@ -253,3 +256,83 @@ Component: Login
 .login-form fieldset {
   margin: 5px;
 }
+
+/*====================================================================
+Component:  Documentation Components
+=====================================================================*/
+
+div.jsdoc-container table, div.jsdoc-container tr, div.jsdoc-container td, div.jsdoc-container th {
+  border: 1px solid #c0c0c0;
+  padding: 4px 8px 4px 8px;
+}
+
+div.jsdoc-container h2 {
+  font-size: 1.5rem;
+  padding-top: 20px;
+  margin-top: 30px;
+  border-top: 1px solid #c0c0c0;
+}
+
+div.jsdoc-container h3 {
+  font-size: 1.2rem;
+  padding-top: 20px;
+  margin-top: 30px;
+  border-top: 1px solid #c0c0c0;  
+}
+
+
+th#param, th#type, th#description, th#default {
+  background-color: #f0f0f0;
+  padding: 4px 8px 4px 8px;
+}
+
+div.documentation-container h2 {
+  font-size: 1.5rem;
+}
+
+div.documentation-container h3 {
+  font-size: 1.2rem;
+}
+
+h3.section-heading  {
+  margin-bottom: 12px;
+}
+
+p.section-link  {
+  margin-bottom: 12px;
+}
+
+div.documentation-container div.codearea {
+  background-color: black;
+  color: #9EE7FD;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 400;
+  margin: 0px;
+  padding: 0px;
+}
+
+div.documentation-container pre.codearea {
+  margin: 0px;
+  padding: 10px;
+  background-color: black;
+  color: #9EE7FD;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 400;
+}
+
+div.documentation-container h3.doc-heading {
+  margin-top: 25px;
+}
+
+div.documentation-container p.code-top-caption {
+  margin-top: 25px;
+  margin-bottom: 3px;
+  color: #d63384;
+}
+
+div.documentation-container p.code-bottom-caption {
+  margin-top: 3px;
+  margin-bottom: 25px;
+  color: #d63384;
+}
+

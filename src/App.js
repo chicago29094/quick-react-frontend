@@ -149,30 +149,30 @@ export const App = (props) => {
             }
             else if (response.status===401) {
                 if (data.ErrorMessage !== undefined) {
-                  console.error(`An error was encountered while requesting the user\'s information. ${data.ErrorMessage}`);
+                  console.error(`An error was encountered while requesting the user's information. ${data.ErrorMessage}`);
                   dispatch({"type": "SessionUpdate", "session": initialSession});
                   return;
                 }
                 else {
-                  console.error(`An error was encountered while requesting the user\'s information.`);
+                  console.error(`An error was encountered while requesting the user's information.`);
                   dispatch({"type": "SessionUpdate", "session": initialSession});
                   return;
                 }
             }
             else if (response.status===503) {
                 if (data.ErrorMessage !== undefined) {
-                  console.error(`An error was encountered while requesting the user\'s information. ${data.ErrorMessage}`);
+                  console.error(`An error was encountered while requesting the user's information. ${data.ErrorMessage}`);
                   dispatch({"type": "SessionUpdate", "session": initialSession});
                   return;
                 } 
                 else {
-                  console.error(`An error was encountered while requesting the user\'s information.`);
+                  console.error(`An error was encountered while requesting the user's information.`);
                   dispatch({"type": "SessionUpdate", "session": initialSession});
                   return;
                 }  
             }  
         } catch(error) {
-          console.error(`An error was encountered while requesting the user\'s information.`);
+          console.error(`An error was encountered while requesting the user's information.`);
           dispatch({"type": "SessionUpdate", "session": initialSession});
           return;
         }
