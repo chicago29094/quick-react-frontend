@@ -16,7 +16,7 @@ export const NaryTree = (props) => {
             <dt><a href="#NaryTree">NaryTree</a></dt>
             <dd><p>This is an implementation of an iterable n-ary tree data structure and associated methods.
             An n-ary tree is a tree data structure where any node may have an arbitrary number of 
-            child nodes. This can potentially used as a trie, but it is not designed for that purpose.</p>
+            child nodes. This can potentially be used as a trie, but it is not designed for that purpose.</p>
             </dd>
             </dl>
             <p><a name="NaryNode"></a></p>
@@ -165,7 +165,7 @@ export const NaryTree = (props) => {
             </table>
             <p><a name="NaryTree+addAsFirstChild"></a></p>
             <h3 id="narytreeaddasfirstchildchildobjparentc41c">naryTree.addAsFirstChild(childObj, parent) ⇒ <code>boolean</code></h3>
-            <p>Adds child as the the first child of the parent node in the n-ary tree</p>
+            <p>Adds child as the first child of the parent node in the n-ary tree</p>
             <p><strong>Kind</strong>: instance method of <a href="#NaryTree"><code>NaryTree</code></a><br />
             <strong>Returns</strong>: <code>boolean</code> - boolean value - success of operation  </p>
             <table>
@@ -191,7 +191,7 @@ export const NaryTree = (props) => {
             </table>
             <p><a name="NaryTree+addAsLastChild"></a></p>
             <h3 id="narytreeaddaslastchildchildobjparentc46c">naryTree.addAsLastChild(childObj, parent) ⇒ <code>boolean</code></h3>
-            <p>Adds child as the the last child of the parent node in the n-ary tree
+            <p>Adds child as the last child of the parent node in the n-ary tree
             Returns a boolean value</p>
             <p><strong>Kind</strong>: instance method of <a href="#NaryTree"><code>NaryTree</code></a><br />
             <strong>Returns</strong>: <code>boolean</code> - boolean value  </p>
@@ -218,7 +218,7 @@ export const NaryTree = (props) => {
             </table>
             <p><a name="NaryTree+addAtPosition"></a></p>
             <h3 id="narytreeaddatpositionchildobjparentpositionc51c">naryTree.addAtPosition(childObj, parent, position) ⇒ <code>boolean</code></h3>
-            <p>Adds child as the the position child of the parent node in the n-ary tree using level-order traversal
+            <p>Adds child as the position child of the parent node in the n-ary tree using level-order traversal
             Returns a boolean value</p>
             <p><strong>Kind</strong>: instance method of <a href="#NaryTree"><code>NaryTree</code></a><br />
             <strong>Returns</strong>: <code>boolean</code> - boolean value  </p>

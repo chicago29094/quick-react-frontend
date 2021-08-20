@@ -22,10 +22,10 @@ export const MainDocumentation = (props) => {
 
             <p>Quick-React markup utilizes a JSX-like code syntax to describe the nested structure of your React components, the hooks you would like to utilize, and form elements that you wish to include in a component.  You can get started by using the Quick-React Website to add a project to your account and start writing your project code or you can write your code in a <code><b>.JS</b></code> or <code><b>.JSX </b></code> file in the root level of the <code><b>/src</b></code> directory of your react project.</p>
 
-            <p>Quick-React does not install JS modules and dependencies and requires that <code><b>create-react-app</b></code> is utilized to create the base components and structure of your React project.  You can then use Quick-React in your <code><b>/src</b></code> directory to jumpstart your project.</p>
+            <p>Quick-React does not install JS modules and dependencies and requires that <code><b>create-react-app</b></code> is utilized to create the base components and structure of your React project.  You can then use Quick-React in your <code><b>/src</b></code> directory to jump-start your project.</p>
 
             <h3 className="doc-heading">Minimum markup code requirements:</h3>
-            <p>Enclose your project code with React <code><b>&lt;&gt;</b></code> and <code><b>&lt;/&gt;</b></code> tags.  Include a self closing <code><b>Config</b></code> component tag. Finally, enclose your project markup with <code><b>&lt;App&gt;</b></code> and <code><b>&lt;/App&gt;</b></code> tags. </p>
+            <p>Enclose your project code with React <code><b>&lt;&gt;</b></code> and <code><b>&lt;/&gt;</b></code> tags.  Include a self-closing <code><b>Config</b></code> component tag. Finally, enclose your project markup with <code><b>&lt;App&gt;</b></code> and <code><b>&lt;/App&gt;</b></code> tags. </p>
 <div className='codearea'>
 <pre className='codearea'>
 {`<>
@@ -39,7 +39,7 @@ export const MainDocumentation = (props) => {
 </div>
    
                 <h3 className="doc-heading">Quick-React Markup Code</h3>
-                <p>Quick-React markup is a collection of React component tags, which each should be named with a name starting with an capital letter and should only include letters and numbers in the name.  The Quick-React component tags may either be self-closing, ending with a forward slash and greater than character <code><b>/&gt;</b></code>, or must include a second matching closing component tag.Opening and closing tags for separate components can <strong>not</strong> overlap.</p>
+                <p>Quick-React markup is a collection of React component tags, which each should be named with a name starting with a capital letter and should only include letters and numbers in the name.  The Quick-React component tags may either be self-closing, ending with a forward slash and greater than character <code><b>/&gt;</b></code>, or must include a second matching closing component tag.  Opening and closing tags for separate components <strong>cannot</strong> overlap.</p>
 
 <p className='code-top-caption'><strong>Valid self-closing and paired component tags:</strong></p>
 <div className='codearea'>
@@ -71,7 +71,7 @@ export const MainDocumentation = (props) => {
         </MainContent>
             </Article>
         <Foo-ter />     <---- Components should have names consisting only of letters and numbers
-        <1Copyright />  <---- Component names can not start with a number
+        <1Copyright />  <---- Component names cannot start with a number
     </App>
 </>
 `}
@@ -152,10 +152,10 @@ export const MainDocumentation = (props) => {
                 </Col>
                 </Row>
 
-                <p>The Quick-React parser goes out of its way to allow attributes to be specified in many different formats.  You can include an attribute keyword by itself or you can use the attribute=true variation of the attribute to indicate you wish to include the element.  You can also list attributes as a comma separated list, with a comma, or a comma and space separating the attributes.  Hooks may be listed in one attribute using a <code><b>hooks='list of hooks'</b></code> or <code><b>hooks="list of hooks"</b></code> format.  Form inputs may also be specified in a single quote or double quote delimited format using the <code><b>forminputs='list of field inputs'</b></code> attribute.</p>
+                <p>The Quick-React parser goes out of its way to allow attributes to be specified in many different formats.  You can include an attribute keyword by itself, or you can use the attribute=true variation of the attribute to indicate you wish to include the element.  You can also list attributes as a comma separated list, with a comma, or a comma and space separating the attributes.  Hooks may be listed in one attribute using a <code><b>hooks='list of hooks'</b></code> or <code><b>hooks="list of hooks"</b></code> format.  Form inputs may also be specified in a single quote or double quote delimited format using the <code><b>forminputs='list of field inputs'</b></code> attribute.</p>
 
                 <p className="mb-0"><strong>*# or *## Attribute Multiplier</strong></p>
-                <p>Quick-React supports an Emmet-style syntax of following an attribute with an <code><b>*</b></code> characater and a single or 2-digit number, signifying that the referenced attribute element should be repeated the specified number of times.</p>
+                <p>Quick-React supports an Emmet-style syntax of following an attribute with an <code><b>*</b></code> character and a single or 2-digit number, signifying that the referenced attribute element should be repeated the specified number of times.</p>
 
                 <p className="mb-0"><strong>[name1, name2, ....] Named Elements</strong></p>
                 <p>Quick-React utilizes generic names for its generated boilerplate code function names and variable names.  However, form field inputs, useEffect, useReducer, and useContext support custom names, which can be specified by including a square-bracket enclosed list of names following the attribute name.  Examples are shown in code <code><b>Sample #2</b></code> below. </p>
